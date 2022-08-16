@@ -3,4 +3,6 @@ import './css/main.css';
 
 
 
-renderHomePage();
+const div = document.querySelector('.app');
+
+console.log(div);

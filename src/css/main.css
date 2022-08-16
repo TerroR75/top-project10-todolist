@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/*=== MAIN HEADER ===*/
+#main-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    /* background: black; */
+}
+
+#main-header h1 {
+    margin-left: auto;
+}
+
+#main-header .fa-bars {
+    margin-left: auto;
+    font-size: 32px;
+    visibility: hidden;
+}
+
+/*=== APP ===*/
+.app {
+    background: blue;
+    height: 100%;
+
+    display: flex;
+}
+
+/* NAVBAR */
+.app .navbar {
+    background: yellow;
+    min-width: 300px;
+    max-width: 300px;
+    /* height: 100%; */
+}
+
+
+/* DISPLAY */
+.app .display {
+    background: orange;
+    height: 100%;
+    width: 100%;
+}
+
+/*=== FOOTER ===*/
+#main-footer {
+    background: red;
+    height: 50px;
+}
+
+
+
+
+/*=== MEDIA QUERIES ===*/
+/* Small screen */
+@media only screen and (max-width: 800px) {
+
+    /*=== HEADER ===*/
+    #main-header .fa-bars {
+        visibility: visible;
+        cursor: pointer;
+    }
+
+    /*=== APP ===*/
+    .app {
+        flex-direction: column;
+    }
+
+    .app .navbar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        opacity: 0.8;
+    }
+}
