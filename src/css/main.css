@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
 }
 
 html,
@@ -9,9 +15,28 @@ body {
     width: 100%;
 }
 
+/* LIGHT THEME */
 body {
+    --COLOR-primary: #FFFFFF;
+    --COLOR-utils: #e4e4e4;
+    --COLOR-secondary: #586F7C;
+    --COLOR-accent: #04E824;
+    --COLOR-text: rgb(0, 0, 0);
+
     display: flex;
     flex-direction: column;
+    color: var(--COLOR-text);
+}
+
+/* DARK THEME */
+body.dark-theme {
+    --COLOR-primary: #312F2F !important;
+    --COLOR-utils: #3b3939 !important;
+    --COLOR-secondary: #5b6069 !important;
+    --COLOR-accent: #04E824 !important;
+    --COLOR-text: rgb(255, 255, 255);
+
+    color: var(--COLOR-text);
 }
 
 /*=== MAIN HEADER ===*/
@@ -21,7 +46,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0 15px;
-    /* background: black; */
+    background: var(--COLOR-utils);
 }
 
 #main-header h1 {
@@ -44,23 +69,39 @@ body {
 
 /* NAVBAR */
 .app .navbar {
-    background: yellow;
+    background: var(--COLOR-secondary);
     min-width: 300px;
     max-width: 300px;
+    font-size: 20px;
     /* height: 100%; */
 }
+
+.navbar .upper-part ul {
+    margin-left: 18px;
+    margin-top: 24px;
+
+}
+
+.navbar .upper-part ul li {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
 
 
 /* DISPLAY */
 .app .display {
-    background: orange;
+    background: var(--COLOR-primary);
     height: 100%;
     width: 100%;
 }
 
 /*=== FOOTER ===*/
 #main-footer {
-    background: red;
+    background: var(--COLOR-utils);
     height: 50px;
 }
 
@@ -89,6 +130,6 @@ body {
         margin-left: auto;
         margin-right: auto;
         width: 100px;
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
