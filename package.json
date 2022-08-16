@@ -1,0 +1,20 @@
+{
+  "name": "top-project10-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TerroR75/top-project10-todolist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TerroR75/top-project10-todolist/issues"
+  },
+  "homepage": "https://github.com/TerroR75/top-project10-todolist#readme"
+}
