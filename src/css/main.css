@@ -74,6 +74,9 @@ body.dark-theme {
     max-width: 300px;
     font-size: 20px;
     /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
 
 .navbar .upper-part ul {
@@ -97,7 +100,48 @@ body.dark-theme {
     background: var(--COLOR-primary);
     height: 100%;
     width: 100%;
+    display: relative;
 }
+
+
+/* Project Display */
+.display .project-container {
+    width: 80%;
+    height: 200px;
+    border: 1px solid red;
+    margin-top: 36px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.project-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    gap: 12px;
+}
+
+.project-buttons button {
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    color: var(--COLOR-text);
+}
+
+.project-container .title {
+    text-align: center;
+}
+
+
+
 
 /*=== FOOTER ===*/
 #main-footer {
