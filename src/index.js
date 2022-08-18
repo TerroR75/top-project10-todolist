@@ -13,10 +13,9 @@ const newProject = new Project('FirstProj', '10.10.2022', 'Some description');
 userProjects.push(newProject);
 export const currentProject = userProjects[0];
 
+const newTodo = new Todo('some random todo text');
+newProject.addTodo(newTodo);
 
-
-
-console.log(projectsList);
 
 refreshProjectsList();
-renderHome();
+renderHome(currentProject);

@@ -1,7 +1,8 @@
-import { currentProject, projectDisplay } from '../index.js';
+import { projectDisplay } from '../index.js';
 
 
-export function renderHome() {
+export function renderHome(project) {
+    projectDisplay.innerHTML = '';
 
     // Elements creation
     const projectContainer = document.createElement('div');
@@ -14,12 +15,12 @@ export function renderHome() {
     todosList.classList.add('todos');
 
     const titleHOne = document.createElement('h1');
-    titleHOne.innerText = currentProject.title;
+    titleHOne.innerText = project.title;
     const dateDiv = document.createElement('div');
     dateDiv.classList.add('date');
-    dateDiv.innerText = currentProject.date;
+    dateDiv.innerText = project.dueDate;
     const descrSpan = document.createElement('span');
-    descrSpan.innerText = currentProject.description;
+    descrSpan.innerText = project.description;
     const orderedList = document.createElement('ol');
 
     // Elements appending
@@ -29,12 +30,32 @@ export function renderHome() {
     projectContainer.appendChild(descrDiv);
     projectContainer.appendChild(todosList);
 
-    titleDiv.appendChild(titleHOne, dateDiv);
+    titleDiv.appendChild(titleHOne);
+    titleDiv.appendChild(dateDiv);
     descrDiv.appendChild(descrSpan);
     todosList.appendChild(orderedList);
+
+    renderProjectsTodosList(project);
 }
 
 function updateHome() {
     const title = projectDisplay.querySelector('.title h1');
     const description = projectDisplay.querySelector('.description span');
+}
+
+
+function renderProjectsTodosList(project) {
+    const todosOl = document.querySelector('.todos ol');
+
+    for (let i = 0; project.todosArray.length; i++) {
+        const newLi = document.createElement('li');
+        newLi.classList.add('project-todo');
+        newLi.innerText = project.todosArray[i].text;
+        todosOl.appendChild(newLi);
+
+        const iconElement = documnet.createElement('i');
+        iconElement.classList.add('fa-solid fa-check');
+
+        newLi.appendChild(iconElement);
+    }
 }
