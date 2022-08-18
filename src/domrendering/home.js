@@ -38,24 +38,59 @@ export function renderHome(project) {
     renderProjectsTodosList(project);
 }
 
-function updateHome() {
-    const title = projectDisplay.querySelector('.title h1');
-    const description = projectDisplay.querySelector('.description span');
-}
+// function updateHome() {
+//     const title = projectDisplay.querySelector('.title h1');
+//     const description = projectDisplay.querySelector('.description span');
+// }
 
 
 function renderProjectsTodosList(project) {
     const todosOl = document.querySelector('.todos ol');
+    todosOl.innerHTML = '';
 
     for (let i = 0; project.todosArray.length; i++) {
         const newLi = document.createElement('li');
         newLi.classList.add('project-todo');
+        if (project.todosArray[i].completed === true) {
+            newLi.classList.add('todo-completed');
+        }
         newLi.innerText = project.todosArray[i].text;
         todosOl.appendChild(newLi);
 
-        const iconElement = documnet.createElement('i');
-        iconElement.classList.add('fa-solid fa-check');
+        const iconCheckElement = document.createElement('i');
+        iconCheckElement.classList.add('fa-solid', 'fa-check');
+        iconCheckElement.dataset.id = i;
+        const iconXElement = document.createElement('i');
+        iconXElement.classList.add('fa-solid', 'fa-xmark');
+        iconXElement.dataset.id = i;
 
-        newLi.appendChild(iconElement);
+        newLi.appendChild(iconCheckElement);
+        newLi.appendChild(iconXElement);
+
+
+        faCheckTodoBtn(iconCheckElement, newLi, project);
+        faXMarkTodoBtn(iconXElement, project);
     }
+}
+
+function faCheckTodoBtn(iconElement, listElement, project) {
+    iconElement.addEventListener('click', () => {
+        if (project.todosArray[parseInt(iconElement.dataset.id)].completed === false) {
+            project.todosArray[parseInt(iconElement.dataset.id)].completed = true;
+            listElement.classList.add('todo-completed');
+        }
+        else {
+            project.todosArray[parseInt(iconElement.dataset.id)].completed = false;
+            listElement.classList.remove('todo-completed');
+        }
+    })
+}
+
+function faXMarkTodoBtn(iconElement, project) {
+    iconElement.addEventListener('click', () => {
+        project.todosArray.splice(parseInt(iconElement.dataset.id), 1);
+        console.log(project);
+        renderProjectsTodosList(project);
+    });
+
 }

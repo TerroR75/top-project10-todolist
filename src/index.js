@@ -14,7 +14,13 @@ userProjects.push(newProject);
 export const currentProject = userProjects[0];
 
 const newTodo = new Todo('some random todo text');
+const secondTodo = new Todo('second todo', true);
+// newTodo.completed = true;
 newProject.addTodo(newTodo);
+newProject.addTodo(secondTodo);
+
+const jsonStringify = JSON.stringify(newProject);
+console.log(jsonStringify);
 
 
 refreshProjectsList();

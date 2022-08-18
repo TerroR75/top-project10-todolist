@@ -156,12 +156,20 @@ body.dark-theme {
     position: relative;
 }
 
-.project-todo i {
+.project-todo .fa-check {
     position: absolute;
     left: 12px;
     top: 10px;
     font-size: 24px;
     visibility: hidden;
+}
+
+.project-todo .fa-xmark {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    visibility: hidden;
+    font-size: 24px;
 }
 
 .project-todo:hover i {
@@ -171,6 +179,11 @@ body.dark-theme {
 
 .todos .project-todo:nth-child(2n) {
     background: #e7e7e7;
+}
+
+.todo-completed {
+    text-decoration: line-through;
+    background: rgba(0, 255, 0, 0.2) !important;
 }
 
 /* Project utils (buttons) */

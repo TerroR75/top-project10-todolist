@@ -1,6 +1,7 @@
 export class Todo {
 
-    constructor(text) {
+    constructor(text, completed = false) {
         this.text = text;
+        this.completed = completed;
     }
 }
