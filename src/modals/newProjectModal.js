@@ -6,6 +6,7 @@ import {
     modalOpenCloseBtns,
     modalSubmit,
     userProjects,
+    saveData,
 } from '../index.js';
 import { Project } from '../classes/project.js';
 import { refreshProjectsList } from '../domrendering/projectsList.js';
@@ -28,6 +29,7 @@ export function newProjectModalInit() {
 
             newProjectModal.classList.toggle('modal-visible');
             refreshProjectsList();
+            saveData();
         }
     })
 }

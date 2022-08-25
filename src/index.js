@@ -10,7 +10,7 @@ export const projectsList = document.querySelector('.bottom-part ul');
 export const projectDisplay = document.querySelector('.display');
 
 // User Related Exports
-export const userProjects = [];
+export let userProjects = [];
 export let currentProject = null;
 
 // New Project Modal
@@ -21,32 +21,31 @@ export const modalDescrInput = document.querySelector('.modal #descr');
 export const modalOpenCloseBtns = document.querySelectorAll('.modal-openclose');
 export const modalSubmit = document.querySelector('.modal button');
 
+loadData();
 
 // TESTING AREA
-const newProject = new Project('FirstProj', '10.10.2022', 'Some description');
-const newProject2 = new Project('SecondProj', '10.10.2022', 'Some description');
-userProjects.push(newProject);
-userProjects.push(newProject2);
+// const newProject = new Project('FirstProj', '10.10.2022', 'Some description');
+// const newProject2 = new Project('SecondProj', '10.10.2022', 'Some description');
+// userProjects.push(newProject);
+// userProjects.push(newProject2);
 
-currentProject = userProjects[1];
+// currentProject = userProjects[1];
 
-const newTodo = new Todo('some random todo text');
-const secondTodo = new Todo('second todo', true);
-// newTodo.completed = true;
-newProject.addTodo(newTodo);
-newProject.addTodo(secondTodo);
+// const newTodo = new Todo('some random todo text');
+// const secondTodo = new Todo('second todo', true);
+// // newTodo.completed = true;
+// newProject.addTodo(newTodo);
+// newProject.addTodo(secondTodo);
 
-const Todo1 = new Todo('random todo');
-const Todo2 = new Todo('second todo', true);
-newProject2.addTodo(Todo1);
-newProject2.addTodo(Todo2);
+// const Todo1 = new Todo('random todo');
+// const Todo2 = new Todo('second todo', true);
+// newProject2.addTodo(Todo1);
+// newProject2.addTodo(Todo2);
 
-const jsonStringify = JSON.stringify(newProject);
-// console.log(jsonStringify);
+// const jsonStringify = JSON.stringify(newProject);
 
 newProjectModalInit();
 refreshProjectsList();
-
 
 
 export function setCurrentProject(index) {
@@ -54,4 +53,15 @@ export function setCurrentProject(index) {
     console.log('setting current project (index.js)');
 
     renderHome(currentProject);
+}
+
+export function saveData() {
+    let data = JSON.stringify(userProjects);
+    window.localStorage.setItem('data', data);
+    console.log(data);
+}
+
+function loadData() {
+    let data = window.localStorage.getItem('data');
+    userProjects = JSON.parse(data);
 }
