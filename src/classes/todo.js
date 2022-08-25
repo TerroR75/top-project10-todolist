@@ -4,4 +4,8 @@ export class Todo {
         this.text = text;
         this.completed = completed;
     }
+
+    get completion() {
+        return this.completed;
+    }
 }

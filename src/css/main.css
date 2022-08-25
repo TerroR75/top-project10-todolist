@@ -99,9 +99,20 @@ body.dark-theme {
     margin-top: 12px;
 }
 
+.bottom-part ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bottom-part ul li.active-project {
+    border-right: 4px solid var(--COLOR-accent);
+}
+
 .bottom-part .create-project {
     text-align: center;
     cursor: pointer;
+    user-select: none;
 }
 
 

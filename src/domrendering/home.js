@@ -1,11 +1,11 @@
 import { projectDisplay } from '../index.js';
 
 
-let projectToRender = null;
-
 export function renderHome(project) {
     projectDisplay.innerHTML = '';
-    projectToRender = project;
+
+
+
     // Elements creation
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('project-container');
@@ -37,21 +37,17 @@ export function renderHome(project) {
     descrDiv.appendChild(descrSpan);
     todosList.appendChild(orderedList);
 
-    renderProjectsTodosList(project);
+    console.log('renderHome (home.js)');
+    renderProjectTodosList(project);
 }
 
-// function updateHome() {
-//     const title = projectDisplay.querySelector('.title h1');
-//     const description = projectDisplay.querySelector('.description span');
-// }
-
-
-function renderProjectsTodosList(project) {
-    const todosOl = document.querySelector('.todos ol');
+function renderProjectTodosList(project) {
+    let todosOl = document.querySelector('.todos ol');
     todosOl.innerHTML = '';
 
-    for (let i = 0; project.todosArray.length; i++) {
-        const newLi = document.createElement('li');
+    for (let i = 0; i < project.todosArray.length; i++) {
+        // List element itself creation
+        let newLi = document.createElement('li');
         newLi.classList.add('project-todo');
         if (project.todosArray[i].completed === true) {
             newLi.classList.add('todo-completed');
@@ -59,44 +55,33 @@ function renderProjectsTodosList(project) {
         newLi.innerText = project.todosArray[i].text;
         todosOl.appendChild(newLi);
 
-        const iconCheckElement = document.createElement('i');
-        iconCheckElement.classList.add('fa-solid', 'fa-check');
-        iconCheckElement.dataset.id = i;
-        const iconXElement = document.createElement('i');
-        iconXElement.classList.add('fa-solid', 'fa-xmark');
-        iconXElement.dataset.id = i;
+        // Buttons for list element creation
+        const iconCheckBtn = document.createElement('i');
+        iconCheckBtn.classList.add('fa-solid', 'fa-check');
+        iconCheckBtn.dataset.id = i;
 
-        newLi.appendChild(iconCheckElement);
-        newLi.appendChild(iconXElement);
+        const iconDeleteBtn = document.createElement('i');
+        iconDeleteBtn.classList.add('fa-solid', 'fa-xmark');
+        iconDeleteBtn.dataset.id = i;
 
+        newLi.appendChild(iconCheckBtn);
+        newLi.appendChild(iconDeleteBtn);
 
-        faCheckTodoBtn(iconCheckElement, newLi, project);
-        faXMarkTodoBtn(iconXElement, project);
+        iconCheckBtn.addEventListener('click', () => {
+            newLi.classList.toggle('todo-completed');
+            if (project.todosArray[parseInt(iconCheckBtn.dataset.id)].completed === false) {
+                project.todosArray[parseInt(iconCheckBtn.dataset.id)].completed = true;
+            }
+            else {
+                project.todosArray[parseInt(iconCheckBtn.dataset.id)].completed = false;
+            }
+
+        });
+
+        iconDeleteBtn.addEventListener('click', () => {
+            project.todosArray.splice(parseInt(iconDeleteBtn.dataset.id), 1);
+            renderProjectTodosList(project);
+        });
+
     }
-}
-
-function faCheckTodoBtn(iconElement, listElement, project) {
-    iconElement.addEventListener('click', () => {
-        if (project.todosArray[parseInt(iconElement.dataset.id)].completed === false) {
-            project.todosArray[parseInt(iconElement.dataset.id)].completed = true;
-            listElement.classList.add('todo-completed');
-        }
-        else {
-            project.todosArray[parseInt(iconElement.dataset.id)].completed = false;
-            listElement.classList.remove('todo-completed');
-        }
-    })
-}
-
-function faXMarkTodoBtn(iconElement, project) {
-    iconElement.addEventListener('click', () => {
-        project.todosArray.splice(parseInt(iconElement.dataset.id), 1);
-        console.log(project);
-        renderProjectsTodosList(project);
-    });
-
-}
-
-function renderProjectsTodos() {
-
 }

@@ -1,4 +1,4 @@
-import { projectsList, userProjects } from '../index.js';
+import { projectsList, userProjects, setCurrentProject } from '../index.js';
 
 export function refreshProjectsList() {
     projectsList.innerHTML = '';
@@ -11,4 +11,24 @@ export function refreshProjectsList() {
 
         projectsList.appendChild(newListElement);
     }
+
+    addEventListeners();
+
+}
+
+function addEventListeners() {
+    const projectList = document.querySelectorAll('.bottom-part li');
+
+
+    projectList.forEach(project => {
+        project.addEventListener('click', () => {
+            if (!project.classList.contains('active-project')) {
+                for (let proj of projectList) {
+                    proj.classList.remove('active-project');
+                }
+                setCurrentProject(parseInt(project.dataset.id));
+                project.classList.add('active-project');
+            }
+        });
+    });
 }
