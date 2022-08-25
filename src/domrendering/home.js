@@ -1,9 +1,11 @@
 import { projectDisplay } from '../index.js';
 
 
+let projectToRender = null;
+
 export function renderHome(project) {
     projectDisplay.innerHTML = '';
-
+    projectToRender = project;
     // Elements creation
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('project-container');
@@ -92,5 +94,9 @@ function faXMarkTodoBtn(iconElement, project) {
         console.log(project);
         renderProjectsTodosList(project);
     });
+
+}
+
+function renderProjectsTodos() {
 
 }

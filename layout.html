@@ -29,6 +29,7 @@
             </div>
 
             <div class="bottom-part">
+                <div class="create-project">New Project</div>
                 <nav>
                     <ul>
                         <li>New Project</li>
@@ -76,6 +77,25 @@
         <a href="https://github.com/TerroR75" target="_blank">
             <i class="fab fa-github"></i></a>
     </footer>
+
+
+
+    <div class="new-project-modal modal-visible">
+        <div class="modal">
+            <i class="fa-solid fa-xmark"></i>
+
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+
+            <label for="date">Due date</label>
+            <input type="date" name="date" id="date">
+
+            <label for="descr">Description</label>
+            <textarea name="descr" id="descr" cols="30" rows="10"></textarea>
+
+            <button type="" class="modal-submit-btn">Submit</button>
+        </div>
+    </div>
 </body>
 
 </html>
